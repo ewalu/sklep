@@ -23,16 +23,21 @@ public abstract class Sklep {
 		);
 	}
 	//sprzeda¿ osobie jednej sztuki towaru
-	public void sprzedaj(OsobaFizyczna osoba, Towar towar) {
-			sprzedaj(osoba, towar, 1);
+	public void sprzedaj(OsobaFizyczna osoba, Towar towar) throws ExceptionPelnoletni {
+		sprzedaj(osoba, towar, 1);
 	}
 	
-	public void sprzedaj(OsobaFizyczna osoba, Towar towar, int ilosc) {
+	public void sprzedaj(OsobaFizyczna osoba, Towar towar, int ilosc) throws ExceptionPelnoletni {
 		//wyliczam cenê po promocji
 		BigDecimal cenapro = this.promocja(towar);
 		
+		
+		if (towar.uzywka()) {
+			osoba.pelnoletni();
+		}
+		
 		//sprzeda¿ w zale¿noœci od pe³noletnoœci i stanu w sklepie
-		if ((!towar.uzywka() || osoba.pelnoletni()) && this.stan(ilosc, towar) == 1) {
+		if (this.stan(ilosc, towar) == 1) {
 			//osoba kupuje towar w konkretnej iloœci i cenie
 			osoba.kup(towar, ilosc, cenapro);
 			towaryWsklepie.forEach(i -> {
@@ -42,9 +47,6 @@ public abstract class Sklep {
 			}
 			
 					);
-		}
-		else if (!osoba.pelnoletni() && towar.uzywka()) {
-			System.out.println("Drogi kliencie "+osoba.getImie()+", nie mogê Ci sprzedaæ u¿ywki, gdy¿ masz "+osoba.getWiek()+" lat.");
 		}
 		else if (this.stan(ilosc,towar) == 0) {
 			

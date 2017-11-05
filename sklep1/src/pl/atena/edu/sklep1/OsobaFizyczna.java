@@ -91,8 +91,11 @@ public class OsobaFizyczna implements Osoba {
 		this.wiek += lata;
 	}
 	
-	public boolean pelnoletni() {
-		return this.wiek < PELNOLETNOSC ? false: true;
+	public void pelnoletni() throws ExceptionPelnoletni{
+		if (this.wiek < PELNOLETNOSC) {
+			throw new ExceptionPelnoletni("Osoba jest niepelnoletnia.");
+		}
+		//return this.wiek < PELNOLETNOSC ? false: true;
 	}
 
 	@Override //adnotacja nadpisanie

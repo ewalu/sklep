@@ -33,13 +33,18 @@ public class Sprzedaz {
 		browar1.sortujTowary();
 		browar1.wyswietlstan();
 		
-		browar1.sprzedaj(osoba1, Jablko);
+		try {
 		browar1.sprzedaj(osoba1, Fajki);
-		browar1.sprzedaj(osoba2, Fajki, 2);
-		browar1.sprzedaj(osoba2, Fajki);
-		browar1.sprzedaj(osoba3, Fajki, 4);
-		browar1.sprzedaj(osoba1, Banan, 201);
-		browar1.sprzedaj(osoba2,Piwo,2);
+		} catch (ExceptionPelnoletni ex) {
+			System.out.println(ex.getLocalizedMessage());
+			
+		};
+		//browar1.sprzedaj(osoba1, Fajki);
+		//browar1.sprzedaj(osoba2, Fajki, 2);
+		//browar1.sprzedaj(osoba2, Fajki);
+		//browar1.sprzedaj(osoba3, Fajki, 4);
+		//browar1.sprzedaj(osoba1, Banan, 201);
+		//browar1.sprzedaj(osoba2,Piwo,2);
 		osoba2.wyswietlzakupy();
 		osoba1.wyswietlzakupy();
 		osoba3.wyswietlzakupy();
@@ -48,7 +53,7 @@ public class Sprzedaz {
 		
 		
 		
-		browar1.sprzedaj(osoba4,Piwo);
+		//browar1.sprzedaj(osoba4,Piwo);
 
 		
 	}
