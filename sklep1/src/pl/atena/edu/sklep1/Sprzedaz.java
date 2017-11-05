@@ -1,12 +1,28 @@
 package pl.atena.edu.sklep1;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Sprzedaz {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SecurityException, IOException {
+		
+		Logger logger = Logger.getLogger(Sprzedaz.class.getCanonicalName());
+		logger.setLevel(Level.ALL);
+		
+		logger.setUseParentHandlers(false);
+		//Handler handler = new ConsoleHandler();
+		FileHandler handler = new FileHandler("%h/Wyjatki%u.log",true);
+		handler.setLevel(Level.ALL);
+		logger.addHandler(handler);
+		
+		logger.warning("Pierwsze logowanie");
+		logger.info("Drugie logowanie");
 		
 		//System.out.println(Rodzaj.JABLKO.ordinal()+" "+Rodzaj.PIWO.getCode());
 		OsobaFizyczna osoba1 = new OsobaFizyczna("Jan","Janek", 17, 60);

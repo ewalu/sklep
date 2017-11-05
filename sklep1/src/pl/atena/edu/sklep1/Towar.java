@@ -47,7 +47,7 @@ public class Towar implements ITowar {
 	public int ilosc() {
 		return this.ilosc;
 	}
-	public boolean uzywka() {
+	public boolean uzywka(){
 		return this.uzywka;
 	}
 

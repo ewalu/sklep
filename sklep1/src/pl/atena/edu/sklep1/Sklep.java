@@ -23,11 +23,11 @@ public abstract class Sklep {
 		);
 	}
 	//sprzeda¿ osobie jednej sztuki towaru
-	public void sprzedaj(OsobaFizyczna osoba, Towar towar) throws ExceptionPelnoletni {
+	public void sprzedaj(OsobaFizyczna osoba, Towar towar) throws ExceptionPelnoletni{
 		sprzedaj(osoba, towar, 1);
 	}
 	
-	public void sprzedaj(OsobaFizyczna osoba, Towar towar, int ilosc) throws ExceptionPelnoletni {
+	public void sprzedaj(OsobaFizyczna osoba, Towar towar, int ilosc) throws ExceptionPelnoletni{
 		//wyliczam cenê po promocji
 		BigDecimal cenapro = this.promocja(towar);
 		
