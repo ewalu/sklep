@@ -42,7 +42,7 @@ public abstract class Sklep {
 			if (field == null){
 				return;
 			}
-			if (osoba.getWiek() < ca.wiek())*/
+			if (osoba.getWiek() < ca.wiek()) - iilex komunikat*/
 
 		if (towar.uzywka()) {
 			osoba.pelnoletni();
