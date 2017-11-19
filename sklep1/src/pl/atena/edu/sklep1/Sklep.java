@@ -1,5 +1,6 @@
 package pl.atena.edu.sklep1;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,7 +34,16 @@ public abstract class Sklep {
 		//wyliczam cenê po promocji
 		BigDecimal cenapro = this.promocja(towar);
 		
+		String rodzajtowaru = towar.getRodzaj().toString();
 		
+		/*try {
+			Field field = rodzajtowaru.getClass().getField(Rodzaj.class.getName());
+			CheckAge ca = field.getAnnotation(CheckAge.class);
+			if (field == null){
+				return;
+			}
+			if (osoba.getWiek() < ca.wiek())*/
+
 		if (towar.uzywka()) {
 			osoba.pelnoletni();
 		}

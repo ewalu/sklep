@@ -1,12 +1,14 @@
 package pl.atena.edu.sklep1;
 
 public enum Rodzaj {
+	@CheckAge
 	PIWO (1) {
 		public void opis() {
 			System.out.println("To jest piwo");
 		}
 		
 	},
+	@CheckAge (wiek = 17)
 	FAJKI (2) {
 		public void opis() {
 			System.out.println("To jest fajki");
