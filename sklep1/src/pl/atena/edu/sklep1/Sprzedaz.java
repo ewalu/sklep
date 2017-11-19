@@ -67,6 +67,9 @@ public class Sprzedaz {
 		browar1.wyswietlstan();
 		browar2.wyswietlstan();
 		
+		browar2.zmienCeny();
+		browar2.wyswietlstan();
+		
 		
 		
 		//browar1.sprzedaj(osoba4,Piwo);

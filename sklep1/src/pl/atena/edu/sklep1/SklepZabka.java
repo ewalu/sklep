@@ -11,6 +11,7 @@ public class SklepZabka extends Sklep {
 	public SklepZabka(String nazwa) {
 		super(nazwa);
 	}
+	
 
 	@Override
 	public BigDecimal promocja(Towar towar) {
@@ -26,5 +27,6 @@ public class SklepZabka extends Sklep {
 		}
 		return towar.cena();
 	}
+	
 
 }

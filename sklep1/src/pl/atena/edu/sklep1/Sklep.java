@@ -1,9 +1,11 @@
 package pl.atena.edu.sklep1;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 public abstract class Sklep {
 	List<Towar> towaryWsklepie = new ArrayList<>();
@@ -95,6 +97,13 @@ public abstract class Sklep {
 			
 		}
 		);
+	}
+	
+	
+	public void zmienCeny () {
+		towaryWsklepie.forEach(item -> {
+			item.ustawCene();
+		});
 	}
 		
 
