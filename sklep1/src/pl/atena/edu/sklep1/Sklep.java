@@ -100,9 +100,9 @@ public abstract class Sklep {
 	}
 	
 	
-	public void zmienCeny () {
+	public void zmienCenyMc () {
 		towaryWsklepie.forEach(item -> {
-			item.ustawCene();
+			item.ustawCeneMc();
 		});
 	}
 		

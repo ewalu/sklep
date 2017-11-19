@@ -29,6 +29,7 @@ public class Towar implements ITowar {
 		this.ilosc+=ilosc;
 	}
 	
+	//modyfikator ceny od miesi¹ca
 	protected UnaryOperator<BigDecimal> modyfikujCene (){
 		int month = LocalDate.now().getMonthValue();
 		
@@ -38,13 +39,15 @@ public class Towar implements ITowar {
 			return item -> item.multiply(BigDecimal.valueOf(1.05));
 	}
 	
+	//obni¿ka zgodnie w promocj¹
 	public BigDecimal obnizCene(int promo) {
 		BigDecimal cenapro;
 		cenapro = BigDecimal.valueOf(100-promo).multiply(this.cena).divide(BigDecimal.valueOf(100));
 		return cenapro;
 	}
 	
-	public void ustawCene() {
+	//ustawienie ceny zgdonie z obni¿k¹ miesiêczn¹
+	public void ustawCeneMc() {
 		UnaryOperator<BigDecimal> modyfikator = modyfikujCene();
 		this.cena = modyfikator.apply(cena);
 	}
