@@ -40,17 +40,19 @@ public class Towar implements ITowar {
 	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena) {
 		this(rodzaj, uzywka);
 		this.cena = cena;
+		this.waznosc = LocalDate.now().plusYears(1);
 	}
 	
 	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena, int ilosc) {
 		this(rodzaj, uzywka, cena);
 		this.ilosc = ilosc;
+		this.waznosc = LocalDate.now().plusYears(1);
 	}
 	
-	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena, int ilosc, LocalDate waznosc) {
-		this(rodzaj, uzywka, cena);
-		this.ilosc = ilosc;
-		this.waznosc = waznosc;
+	
+	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena, int ilosc, LocalDate sprzedaz) {
+		this(rodzaj, uzywka, cena, ilosc);
+		this.sprzedaz = sprzedaz;
 	}
 	
 	public void zwiekszIlosc(int ilosc) {

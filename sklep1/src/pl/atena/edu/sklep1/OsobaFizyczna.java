@@ -1,5 +1,6 @@
 package pl.atena.edu.sklep1;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class OsobaFizyczna implements Osoba {
 	}
 	
 	public void kup(Towar towar, int ilosc, BigDecimal cenapro) {
-		Towar towarkupiony = new Towar(towar.rodzaj(), towar.uzywka(), cenapro, ilosc);
+		Towar towarkupiony = new Towar(towar.rodzaj(), towar.uzywka(), cenapro, ilosc, LocalDate.now());
 		System.out.println(this.imie+" kupuje "+towar.rodzaj()+" "+ilosc);
 		
 		towaryKupione.add(towarkupiony);
@@ -105,8 +106,8 @@ public class OsobaFizyczna implements Osoba {
 	
 	public void wyswietlzakupy() {
 		System.out.println();
-		System.out.println(this.imie);
-		this.towaryKupione.forEach(i -> System.out.println(i.rodzaj()+" iloœæ: "+i.ilosc()+" cena: "+i.cena()));
+		System.out.println(this.imie+":");
+		this.towaryKupione.forEach(i -> System.out.println(i.rodzaj()+" iloœæ: "+i.ilosc()+", cena: "+i.cena()+ ", w dniu: "+i.getSprzedaz()));
 		System.out.println();
 	}
 
