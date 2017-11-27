@@ -2,6 +2,7 @@ package pl.atena.edu.sklep1;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.function.UnaryOperator;
 
 public class Towar implements ITowar {
@@ -9,11 +10,31 @@ public class Towar implements ITowar {
 	private BigDecimal cena;
 	private int ilosc;
 	private boolean uzywka;
+	private LocalDate waznosc;
+	private LocalDate sprzedaz;
 	
 	
+	
+	public LocalDate getWaznosc() {
+		return waznosc;
+	}
+
+	public void setWaznosc(LocalDate waznosc) {
+		this.waznosc = waznosc;
+	}
+
+	public LocalDate getSprzedaz() {
+		return sprzedaz;
+	}
+
+	public void setSprzedaz(LocalDate sprzedaz) {
+		this.sprzedaz = sprzedaz;
+	}
+
 	public Towar(Rodzaj rodzaj, boolean uzywka) {
 		this.rodzaj = rodzaj;
 		this.uzywka = uzywka;
+		this.waznosc = LocalDate.now().plusYears(1);
 	}
 	
 	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena) {
@@ -25,6 +46,13 @@ public class Towar implements ITowar {
 		this(rodzaj, uzywka, cena);
 		this.ilosc = ilosc;
 	}
+	
+	public Towar(Rodzaj rodzaj, boolean uzywka, BigDecimal cena, int ilosc, LocalDate waznosc) {
+		this(rodzaj, uzywka, cena);
+		this.ilosc = ilosc;
+		this.waznosc = waznosc;
+	}
+	
 	public void zwiekszIlosc(int ilosc) {
 		this.ilosc+=ilosc;
 	}
