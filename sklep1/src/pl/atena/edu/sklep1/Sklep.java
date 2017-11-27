@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.UnaryOperator;
 
 public abstract class Sklep {
@@ -25,6 +26,30 @@ public abstract class Sklep {
 		}
 		);
 	}
+	
+	private void sprawdzWiekAd(OsobaFizyczna osoba, Towar towar) {
+		Objects.requireNonNull(osoba);
+		Objects.requireNonNull(towar.getRodzaj());
+
+		Rodzaj rodzajtowaru = towar.getRodzaj();
+		//System.out.println(rodzajtowaru);
+		
+		try {
+			Field field = rodzajtowaru.getClass().getField(rodzajtowaru.name());
+			//System.out.println(field);
+			CheckAge ca = field.getAnnotation(CheckAge.class);
+			if (field == null){
+				return;
+			}
+			if (osoba.getWiek() < ca.wiek()){
+				throw new IllegalArgumentException("Adnotacja: Osoba ma mniej ni¿ "+ca.wiek()+" lat.");
+			
+			}
+			} catch (SecurityException | NoSuchFieldException e) {
+			e.printStackTrace();
+			}
+
+}
 	//sprzeda¿ osobie jednej sztuki towaru
 	public void sprzedaj(OsobaFizyczna osoba, Towar towar) throws ExceptionPelnoletni{
 		sprzedaj(osoba, towar, 1);
@@ -34,19 +59,11 @@ public abstract class Sklep {
 		//wyliczam cenê po promocji
 		BigDecimal cenapro = this.promocja(towar);
 		
-		String rodzajtowaru = towar.getRodzaj().toString();
-		
-		/*try {
-			Field field = rodzajtowaru.getClass().getField(Rodzaj.class.getName());
-			CheckAge ca = field.getAnnotation(CheckAge.class);
-			if (field == null){
-				return;
-			}
-			if (osoba.getWiek() < ca.wiek()) - iilex komunikat*/
-
-		if (towar.uzywka()) {
+		sprawdzWiekAd(osoba, towar);
+			
+		/*if (towar.uzywka()) {
 			osoba.pelnoletni();
-		}
+		}*/
 		
 		//sprzeda¿ w zale¿noœci od pe³noletnoœci i stanu w sklepie
 		if (this.stan(ilosc, towar) == 1) {

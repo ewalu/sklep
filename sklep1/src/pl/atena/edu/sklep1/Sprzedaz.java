@@ -28,7 +28,6 @@ public class Sprzedaz {
 		OsobaFizyczna osoba1 = new OsobaFizyczna("Jan","Janek", 17, 60);
 		OsobaFizyczna osoba2 = new OsobaFizyczna("Ewa","£ugin", 18, 60);
 		OsobaFizyczna osoba3 = new OsobaFizyczna("Klara","Jakaœ", 19, 60);
-		OsobaFizyczna osoba4 = new OsobaFizyczna();
 		Towar Piwo = new Towar(Rodzaj.PIWO, true, BigDecimal.valueOf(1.9), 90);
 		Towar Banan = new Towar(Rodzaj.BANAN, false, BigDecimal.valueOf(2), 200);
 		Towar Fajki = new Towar(Rodzaj.FAJKI, true, BigDecimal.valueOf(2), 100);

@@ -14,11 +14,13 @@ public enum Rodzaj {
 			System.out.println("To jest fajki");
 		}
 	},
+	@CheckAge (wiek = 0)
 	BANAN (3) {
 		public void opis() {
 			System.out.println("To jest banan");
 		}
 	},
+	@CheckAge (wiek = 0)
 	JABLKO (4) {
 		public void opis() {
 			System.out.println("To jest jab³ko");
